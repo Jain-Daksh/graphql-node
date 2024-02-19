@@ -41,9 +41,6 @@ export const ViewNovel = ({ novel }: Props) => {
       </p>
       {/* source and date */}
       <div className="flex justify-between italic	 ß text-xs mt-auto  text-slate-500">
-        <p className="text-white text-lg">
-          Authors :{novel?.authors?.length}
-        </p>
       </div>
       <Link
         href={`http://localhost:3000/novel/${novel.id}`}
