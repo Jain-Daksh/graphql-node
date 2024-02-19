@@ -41,6 +41,41 @@ export const resolvers = {
           
         }
       })
+    },
+
+    deleteNovel: async(parent:any, args:any, context:Context) => {
+      return await context.prisma.novel.delete({
+        where:{
+          id: args.id
+        },
+      })
     }
-  }
+  },
+  addAuthor: async (_parent: any, args: any, context: Context) => {
+    return await context.prisma.author.create({
+      data: {
+        novelId: args.novelId,
+        name: args.name,
+      },
+    });
+  },
+  // delete author
+  deleteAuthor: async (_parent: any, args: any, context: Context) => {
+    return await context.prisma.author.delete({
+      where: {
+        id: args.id,
+      },
+    });
+  },
+  updateNovel: async (_parent: any, args: any, context: Context) => {
+    return await context.prisma.novel.update({
+      where: {
+        id: args.id,
+      },
+      data: {
+        title: args.title,
+        image: args.image,
+      },
+    });
+  },
 };

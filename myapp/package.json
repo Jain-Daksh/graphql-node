@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen": "graphql-codegen --config codegen.yaml"
   },
   "dependencies": {
+    "@apollo/client": "^3.9.5",
     "@apollo/server": "^4.10.0",
     "@as-integrations/next": "^3.0.0",
     "@prisma/client": "^5.9.1",
