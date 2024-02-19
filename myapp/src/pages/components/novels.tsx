@@ -2,6 +2,7 @@
 import React, { FormEvent, useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_NOVELS } from "@/graphql/queries";
+import { DELETE_NOVEL } from "@/graphql/mutation";
 
 import { ADD_NOVEL } from "@/graphql/mutation";
 import { ViewNovel } from "./Novel";
@@ -14,7 +15,9 @@ export const Novels = () => {
     variables: { image, title },
     refetchQueries: [{ query: GET_NOVELS }],
   });
-
+  const [deleteNovel] = useMutation(DELETE_NOVEL, {
+    refetchQueries: [{ query: GET_NOVELS }],
+  });
 
   console.log(data)
 
@@ -90,7 +93,12 @@ export const Novels = () => {
             <div className="flex justify-between italic	 ß text-xs mt-auto  text-slate-500">
             </div>
 
-
+            <button
+              onClick={() => deleteNovel({ variables: { id: n.id } })}
+              className="bg-red-500 mt-5 p-2 rounded-lg"
+            >
+              Delete
+            </button>
           </article>
 
         ))}
