@@ -49,14 +49,14 @@ export const resolvers = {
           id: args.id
         },
       })
-    }
-  },
+    },
+  
   addAuthor: async (_parent: any, args: any, context: Context) => {
     return await context.prisma.author.create({
-      data: {
-        novelId: args.novelId,
+      data:{
         name: args.name,
-      },
+        novelId: args.novelId
+      }
     });
   },
   // delete author
@@ -78,4 +78,5 @@ export const resolvers = {
       },
     });
   },
+}
 };
