@@ -8,14 +8,23 @@ type User{
   username: String!
   age: Int!
   nationality: String!
+  favoriteMovies: [Movie]
+  friends: [User]
 
 
 }
+type Movie {
+  id: ID!
+  name: String!
+  yearOfPublication: Int!
+  isInTheaters: Boolean!
+}
 
-type Query{
-  users:[User],
-  user(id: ID!): User
-
+type Query {
+  users: [User!]!
+  user(id: ID!): User!
+  movies: [Movie!]!
+  movie(name: String!): Movie!
 }
 
 `
